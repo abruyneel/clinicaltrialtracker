@@ -208,3 +208,6 @@ __marimo__/
 
 # database ini
 database.ini
+
+# reports
+output/*

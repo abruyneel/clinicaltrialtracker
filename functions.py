@@ -13,7 +13,10 @@ def lastupdate(delta = 0):
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:
-        return pd.to_datetime(rows[0][0]- dt.timedelta(days=delta))
+        if len(rows) == 0:
+            return dt.datetime.now()- dt.timedelta(days=delta)    
+        else:
+            return pd.to_datetime(rows[0][0]- dt.timedelta(days=delta))
 
 def trial_exists(nct):
     config  = load_config()
